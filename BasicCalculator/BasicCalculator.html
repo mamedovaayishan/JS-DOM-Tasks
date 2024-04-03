@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Basic Calculator</title>
+</head>
+<body>
+    <input type="number" name="" id="eded1">
+    <input type="number" name="" id="eded2">
+    <button class="emel">+</button>
+    <button class="emel">-</button>
+    <button class="emel">*</button>
+    <button class="emel">/</button>
+    <button id="beraber">=</button>
+    <p id="result"></p>
+
+    <script>
+        var operator = ""
+            document.querySelectorAll(".emel").forEach(elem=>{
+                elem.addEventListener("click",function(){
+                    operator=this.innerHTML
+                    console.log(operator)
+                })
+            })
+            beraber.addEventListener("click",function(){
+              if(operator=="+"){
+                 
+                result.innerHTML= Number(eded1.value)+Number(eded2.value)
+              }
+              else if(operator=="-"){
+                 
+                result.innerHTML= Number(eded1.value)-Number(eded2.value)
+                }
+            })
+    </script>
+</body>
+</html>
