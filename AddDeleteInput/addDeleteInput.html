@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+<title>Add and Delete</title>
+<style>
+    body{
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex-direction: column;
+    }
+    #container {
+        width: 400px;
+        margin: 20px auto;
+    }
+
+    input[type="text"] {
+        width: 200px;
+        padding: 10px;
+        margin-bottom: 10px;  
+    }
+
+    .entry {
+        display: flex;
+        align-items: center;
+        margin-bottom: 5px;
+    }
+
+    .entry span {
+        margin-right: 5px;
+    }
+
+    .entry button {
+        margin-left: 5px;
+    }
+    button{
+        padding: 10px 10px;
+        background-color: rgb(29, 96, 190);
+        border-radius: 7px;
+        color: white;
+    }
+</style>
+</head>
+<body>
+
+<div id="container">
+    <input type="text" id="textInput" >
+    <button class="buttonStyle" onclick="addEntry()">Add</button>
+    <div id="entries"></div>
+</div>
+
+<script>
+    function addEntry() {
+        let textInput = document.getElementById("textInput");
+        let text = textInput.value;
+
+        if (text.trim() === "") {
+            alert("Zehmet olmasa metin daxil edin.");
+            return;
+        }
+
+        let entryContainer = document.createElement("div");
+        entryContainer.classList.add("entry");
+
+        let entryText = document.createElement("span");
+        entryText.textContent = text;
+        entryContainer.appendChild(entryText);      
+
+        let deleteButton = document.createElement("button");
+        let trashIcon = document.createElement("i"); 
+        trashIcon.classList.add("fa", "fa-trash"); 
+        deleteButton.appendChild(trashIcon); 
+        deleteButton.onclick = function() {
+            entryContainer.remove();
+        };
+        entryContainer.appendChild(deleteButton);
+
+        document.getElementById("entries").appendChild(entryContainer);
+
+        textInput.value = "";
+    }
+</script>
+
+</body>
+</html>

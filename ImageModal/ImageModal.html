@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Image Gallery</title>
+<style>
+    body {
+        font-family: Arial, sans-serif;
+        background-color: #f4f4f4;
+        margin: 0;
+        padding: 0;
+        overflow: hidden;
+    }
+
+    .gallery {
+        width: 100%;
+        display: flex;
+        justify-content: space-around;
+        align-items: center;
+        margin-top: 50px;
+    }
+
+    .gallery-item {
+        background-color: rebeccapurple;
+        width: 250px;
+        height: 200px;
+        cursor: pointer;
+        border-radius: 15px;
+    }
+
+    img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        border-radius: 15px;
+    }
+
+    .modal {
+        display: none;
+        position: fixed;
+        z-index: 1;
+        left: 0;
+        top: 0;
+        width: 100%;
+        height: 100%;
+        overflow: auto;
+        background-color: rgba(0, 0, 0, 0.9);
+    }
+
+    .modal-content {
+        margin: 5% auto;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+        width: 80%;
+        max-width: 700px;
+        position: relative;
+    }
+
+    .modal-content img {
+        width: 50%;
+        height: auto;
+        border-radius: 15px;
+    }
+
+    .modal-text {
+        color: white;
+        text-align: center;
+        margin-top: 20px;
+    }
+
+    .close {
+        color: #ffffff;
+        position: absolute;
+        top: -60px;
+        right: -25px;
+        font-size: 40px;
+        font-weight: bold;
+        cursor: pointer;
+    }
+
+    .close:hover,
+    .close:focus {
+        color: #fff;
+        text-decoration: none;
+        cursor: pointer;
+    }
+</style>
+</head>
+<body>
+
+<div class="gallery">
+    <div class="gallery-item" onclick="openModal('https://i.pinimg.com/564x/ee/0b/e2/ee0be20d88471fba6e04f2b0a16691fd.jpg', 'Image 1: A beautiful sunset')">
+        <img src="https://i.pinimg.com/564x/ee/0b/e2/ee0be20d88471fba6e04f2b0a16691fd.jpg" alt="Image 1">
+    </div>
+    <div class="gallery-item" onclick="openModal('https://i.pinimg.com/564x/99/f4/f4/99f4f4ee34b66afb3e12474578ef9be3.jpg', 'Image 2: A cozy cabin in the woods')">
+        <img src="https://i.pinimg.com/564x/99/f4/f4/99f4f4ee34b66afb3e12474578ef9be3.jpg" alt="Image 2">
+    </div>
+    <div class="gallery-item" onclick="openModal('https://i.pinimg.com/564x/6b/4d/11/6b4d11cb399222c1c62b97151f7ae563.jpg', 'Image 3: A serene lake view')">
+        <img src="https://i.pinimg.com/564x/6b/4d/11/6b4d11cb399222c1c62b97151f7ae563.jpg" alt="Image 3">
+    </div>
+    <div class="gallery-item" onclick="openModal('https://i.pinimg.com/564x/c1/e4/5f/c1e45f10a7b67aaed769f789874acf33.jpg', 'Image 4: A breathtaking mountain landscape')">
+        <img src="https://i.pinimg.com/564x/c1/e4/5f/c1e45f10a7b67aaed769f789874acf33.jpg" alt="Image 4">
+    </div>
+</div>
+
+<div id="myModal" class="modal">
+    <div class="modal-content">
+        <span class="close" onclick="closeModal()">&times;</span>
+        <img id="modal-image" src="" alt="">
+        <p class="modal-text" id="modal-text"></p>
+    </div>
+</div>
+
+<script>
+    function openModal(imageUrl, imageDescription) {
+        var modal = document.getElementById("myModal");
+        var modalImg = document.getElementById("modal-image");
+        var modalText = document.getElementById("modal-text");
+
+        modal.style.display = "block";
+        modalImg.src = imageUrl;
+        modalText.innerHTML = imageDescription;
+    }
+
+    function closeModal() {
+        var modal = document.getElementById("myModal");
+        modal.style.display = "none";
+    }
+</script>
+
+</body>
+</html>

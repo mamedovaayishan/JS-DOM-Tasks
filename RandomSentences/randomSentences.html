@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Random Sentence</title>
+<style>
+    body{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+    #container {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        width: 500px;
+        height: 200px;
+        border: 1px solid black;
+        position: relative;
+        background-color: #6495ed;
+        color: aliceblue;
+        font-size: 20px;
+        padding: 10px;
+    }
+
+
+    #changeButton {
+        position: absolute;
+        bottom: 10px;
+        left: 50%;
+        transform: translateX(-50%);
+        background-color: rgb(56, 110, 3);
+        color: aliceblue;
+        padding: 10px 30px;
+        font-weight: 500;
+        font-size: 18px;
+    }
+</style>
+</head>
+<body>
+
+<div id="container">
+    <div id="sentence">
+        <p>
+            Bir gün ürəyincə yaşamaq yüz il sürünə sürünə yaşamaqdan yaxşıdır.
+        </p>
+        <h5>
+            (Ş.Bodler)
+        </h5>
+    </div>
+    <button id="changeButton" onclick="change()">Dəyişdir</button>
+</div>
+
+<script>
+        let sentences = [
+            { author: "Ş.Bodler", quote: "Bir gün ürəyincə yaşamaq yüz il sürünə sürünə yaşamaqdan yaxşıdır." },
+            { author: "P.E.VEYS", quote: "Yumor-zarafat arxasında gizlənən ciddilikdir." },
+            { author: "Herbert Uels", quote: "Haqqı hər zaman müdafiə et, anlayan olmasa belə vicdanına hesab verməkdən xilas olarsan." },
+            { author: "Oskar Uayld", quote: "Hər bir gözəllikdə pislik axtaranlar korlanmış insanlardır,bu günahdır.Hər bir gözəllikdə onun yüksək mənasını görənlər mədəni insanlardır,əsil insan isə gözəllikdə elə gözəlliyi görməyi bacaranlardır." },
+            { author: "A.Barbüs", quote: "Ölmək dəhşət deyil, dəhşət yaşamaqdır." }
+        ];
+        let usedIndices = [];
+
+        function change() {
+            if (usedIndices.length === sentences.length) {
+                document.getElementById("sentence").innerText = "Bütün cümlələr işlənib!";
+                document.getElementById("changeButton").setAttribute("disabled", true);
+                return;
+            }
+        
+            let randomIndex;
+            do {
+                randomIndex = Math.floor(Math.random() * sentences.length);
+            } while (usedIndices.includes(randomIndex));
+        
+            usedIndices.push(randomIndex);
+            let currentSentence = sentences[randomIndex];
+            document.getElementById("sentence").innerText = `${currentSentence.quote} (${currentSentence.author})`;
+        }
+</script>
+
+</body>
+</html>

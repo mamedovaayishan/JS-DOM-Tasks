@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Tərsinə Çevir</title>
+    <style>
+      body {
+        font-family: Arial, sans-serif;
+        text-align: center;
+      }
+      #input {
+        margin: 100px auto;
+      }
+    </style>
+  </head>
+  <body>
+    <input type="text" id="input" placeholder="Metni daxil edin " />
+    <button onclick="tersineCevir()">Convert</button>
+    <p id="output"></p>
+
+    <script>
+      function tersineCevir() {
+        var girilenSoz = document.getElementById("input").value;
+        var tersineSoz = girilenSoz.split("").reverse().join("");
+        document.getElementById("output").innerText =
+          "Tersine Çevrilmiş Metin: " + tersineSoz;
+      }
+    </script>
+  </body>
+</html>

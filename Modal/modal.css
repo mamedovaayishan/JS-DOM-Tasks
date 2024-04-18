@@ -1,0 +1,154 @@
+*{
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+html{
+    scroll-behavior:smooth;
+}
+body{
+    font-family: Montserrat!important;
+}
+.navbar{
+    background-image: url(https://startbootstrap.github.io/startbootstrap-agency/assets/img/header-bg.jpg);
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+    object-fit: cover;
+    width: 100%;
+    height: 95vh;
+}
+
+/* PORTFOLIO */
+.portfolio{
+    margin-top: 25rem;
+    width: 100%;
+    height: 50vh;
+    padding: 0 60px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    text-align: center;
+    background-color:rgba(248, 249, 250) ;
+}
+
+
+.portfolio .content{
+    display: flex;
+    align-items: center;
+    text-align: center;
+    justify-content: space-around;
+    flex-direction: row;
+    flex-wrap: wrap;
+}
+.portfolio .content .box{
+    margin: 1%;
+    display: flex;
+    align-items: center;
+    text-align: center;
+    justify-content: space-around;
+    flex-direction: column;
+    border-radius:10px;
+    width: 25%;
+    background-color: #fff;
+
+    
+}
+.portfolio .content .box .image-box{
+    position: relative;
+}
+.portfolio .content .box img{
+   display: block;
+   width: 100%;
+   height: 100%;
+   border-radius:10px;
+}
+
+.portfolio .content .box .overlay {
+    border-radius:10px;
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 100%;
+    width: 100%;
+    opacity: 0;
+    transition: .5s ease;
+    background-color: #ffc800;
+  }
+  
+  .portfolio .content .box:hover .overlay {
+    opacity: 0.9;
+  }
+  
+  .portfolio .content .box .overlay  .text {
+    color: white;
+    font-size: 90px;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    -webkit-transform: translate(-50%, -50%);
+    -ms-transform: translate(-50%, -50%);
+    transform: translate(-50%, -50%);
+    text-align: center;
+  }
+
+  .portfolio .content .box .desc{
+    padding: 2rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    margin-top: 20px;
+
+  }
+
+  .portfolio .content .box .desc .title{
+    font-size: 30px;
+    color: black;
+  }
+
+  .portfolio .content .box .desc  .subtitle{
+    font-style: italic;
+    color: #696969;
+    font-size: 25px;
+  }
+
+  .modal {
+    display: none; 
+    position: fixed;
+    z-index: 5; 
+    left: 0;
+    top: 0;
+    width: 100%; 
+    height: 100%; 
+    overflow: auto; 
+    background-color: rgb(0,0,0); 
+    background-color: rgba(0,0,0,0.4); 
+}
+.modal-content {
+    background-color: #fefefe;
+    margin: 15% auto; 
+    padding: 20px;
+    border: 1px solid #888;
+    height: 300px;
+    width: 500px;
+}
+.close {
+    color: #aaa;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+}
+.close:hover,
+.close:focus {
+    color: black;
+    text-decoration: none;
+    cursor: pointer;
+}
+.modal .modal-content img{
+  width:300px;
+
+}

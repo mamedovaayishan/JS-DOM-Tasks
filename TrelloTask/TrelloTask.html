@@ -1,0 +1,390 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Task List</title>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"
+      integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
+
+    <style>
+      body {
+        font-family: Arial, sans-serif;
+      }
+
+      #container {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+        width: 100%;
+        margin: 20px auto;
+      }
+
+      #inputContainer {
+        width: 50%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        margin-bottom: 10px;
+      }
+
+      #taskInput {
+        width: 100%;
+        padding: 10px;
+      }
+
+      #addButton {
+        padding: 10px 20px;
+        background-color: #4caf50;
+        color: white;
+        border: none;
+        cursor: pointer;
+        margin-left: 10px;
+      }
+      .list {
+        width: 100%;
+        display: flex;
+        align-items: center;
+        justify-content: space-around;
+      }
+      .list .arrow ul {
+        display: flex;
+        align-items: center;
+        text-align: center;
+        flex-direction: column;
+      }
+      .list .arrow ul li {
+        align-items: center;
+        text-align: center;
+        list-style: none;
+        font-size: 20px;
+        padding: 5px;
+        cursor: pointer;
+        text-decoration: underline;
+      }
+      .listContainer {
+        margin-bottom: 20px;
+      }
+
+      .listContainer h2 {
+        margin-bottom: 5px;
+      }
+
+      .taskList {
+        background-color: aquamarine;
+        width: 300px;
+        height: 500px;
+        border: 3px solid #000;
+        list-style-type: none;
+        padding-left: 0;
+      }
+
+      .taskList li {
+        border-bottom: 1px solid #000;
+        height: 25px;
+        margin-bottom: 5px;
+        display: flex;
+        align-items: center;
+        cursor: pointer;
+      }
+
+      .taskList li span {
+        flex: 1;
+      }
+
+      .arrowButton {
+        border: none;
+        background-color: transparent;
+        cursor: pointer;
+      }
+
+      .backGroundColor {
+        background-color: #9ecc06;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="container">
+      <div id="inputContainer">
+        <input type="text" id="taskInput" placeholder="Yeni görev ekle..." />
+        <button id="addButton" onclick="addTask()">Add</button>
+      </div>
+      <div class="list">
+        <div class="listContainer">
+            <h2>Görülecek İşler</h2>
+            <ul id="todoList" class="taskList" onclick="selectTask('todoList')">
+              <li>Lorem ipsum dolor sit.</li>
+              <li>Lorem, ipsum.</li>
+            </ul>
+          </div>
+          <div class="arrow">
+            <ul>
+              <li  onclick="moveList('todoList', 'doingList')">
+                <i class="fas fa-arrow-right"></i>
+              </li>
+              <li  onclick="moveList('doingList', 'todoList')">
+                <i class="fas fa-arrow-left"></i>
+              </li>
+            </ul>
+          </div>
+        
+        <div class="listContainer">
+          <h2>Görülen İşler</h2>
+          <ul id="doingList" class="taskList" onclick="selectTask('doingList')">
+            <li>Lorem ipsum dolor sit.</li>
+            <li>Lorem, ipsum.</li>
+          </ul>
+        </div>
+        <div class="arrow">
+            <ul>
+                <li  onclick="moveList('doingList', 'doneList')">
+                  <i class="fas fa-arrow-right"></i>
+                </li>
+                <li \ onclick="moveList('doneList', 'doingList')">
+                  <i class="fas fa-arrow-left"></i>
+                </li>
+              </ul>
+        </div>
+        <div class="listContainer">
+          <h2>Bitirilen İşler</h2>
+          <ul id="doneList" class="taskList" onclick="selectTask('doneList')">
+            <li>Lorem ipsum dolor sit.</li>
+            <li>Lorem, ipsum.</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <script>
+
+        document.getElementById("addButton").addEventListener("click", function () {
+          let newTask = document.getElementById("taskInput").value;
+          let list = document.querySelector("ul");
+          list.innerHTML += `<li>${newTask}</li>`;
+          document.querySelectorAll("li").forEach((item) => {
+            item.addEventListener("click", function () {
+              this.classList.toggle("backGroundColor");
+            });
+          });
+        });
+function moveList(sourceListId, targetListId) {
+  let sourceList = document.getElementById(sourceListId);
+  let targetList = document.getElementById(targetListId);
+
+  sourceList.querySelectorAll(".backGroundColor").forEach((item) => {
+    targetList.appendChild(item);
+    item.classList.remove("backGroundColor");
+  });
+}
+
+    //   document.querySelectorAll("li").forEach((item) => {
+    //     item.addEventListener("click", function () {
+    //       this.classList.toggle("backGroundColor");
+    //     });
+    //   });
+
+    //   document
+    //     .getElementById("addButton")
+    //     .addEventListener("click", function () {
+    //       let newTask = document.getElementById("taskInput").value;
+    //       let list = document.querySelector("ul");
+    //       list.innerHTML += `<li>${newTask}</li>`;
+    //       document.querySelectorAll("li").forEach((item) => {
+    //         item.addEventListener("click", function () {
+    //           this.classList.toggle("backGroundColor");
+    //         });
+    //       });
+    //     });
+
+    //     moveList.addEventListener("click", function () {
+    //       document.querySelectorAll(".backGroundColor").forEach((item) => {
+    //         todoList.removeChild(item);
+    //         doingList.appendChild(item);
+    //       });
+    //     });
+
+
+    //   document.querySelectorAll("li").forEach((item) => {
+    //     item.addEventListener("click", function () {
+    //       this.classList.toggle(".backGroundColor");
+    //     });
+    //   });
+    //   add.addEventListener("click", function () {
+    //     let newTask = taskInput.value;
+    //     list.innerHTML += `<li>${newTask}</li>`;
+    //     document.querySelectorAll("li").forEach((item) => {
+    //       item.addEventListener("click", function () {
+    //         this.classList.toggle(".backGroundColor");
+    //       });
+    //     });
+    //   });
+      //   firstR.addEventListener("click", function () {
+      //     document.querySelectorAll(".backGroundColor").forEach((item) => {
+      //       waited.removeChild(item);
+      //       proggress.appendChild(item);
+      //     });
+      //   });
+      //////////////////////////////////////////////////////////////////////////
+      //   function addTask() {
+      //     let taskInput = document.getElementById("taskInput");
+      //     let taskText = taskInput.value.trim(" ");
+      //     if (taskText === "") {
+      //       alert("Zehmet olmasa metni daxil edin");
+      //       return;
+      //     }
+      //     let listItem = document.createElement("li");
+      //     listItem.innerHTML = "<span>" + taskText + "</span>";
+      //     let todoList = document.getElementById("todoList");
+      //     todoList.appendChild(listItem);
+      //     taskInput.value = "";
+      //   }
+
+      // function selectTask(listId) {
+      //     let allLists = document.querySelectorAll('.taskList');
+      //     allLists.forEach(function(list) {
+      //         let items = list.getElementsByTagName("li");
+      //         for (let i = 0; i < items.length; i++) {
+      //             items[i].classList.remove("selected");
+      //         }
+      //     });
+
+      //     let listItem = event.target.closest("li");
+      //     if (listItem) {
+      //         listItem.classList.add("selected");
+      //     }
+      // }
+
+      // function moveList(listId, direction) {
+      //     let selectedTask = document.querySelector("#" + listId + " .selected");
+      //     if (selectedTask) {
+      //         let targetListId;
+      //         if (direction === "right") {
+      //             if (listId === "todoList") {
+      //                 targetListId = "doingList";
+      //             } else if (listId === "doingList") {
+      //                 targetListId = "doneList";
+      //             }
+      //         } else if (direction === "left") {
+      //             if (listId === "doingList") {
+      //                 targetListId = "todoList";
+      //             } else if (listId === "doneList") {
+      //                 targetListId = "doingList";
+      //             }
+      //         }
+            //   let targetList = document.getElementById(targetListId);
+            //   selectedTask.parentNode.removeChild(selectedTask);
+            //   targetList.appendChild(selectedTask);
+            //   selectedTask.classList.remove("selected");
+      //     }
+      // }
+    </script>
+
+    <!-- <script>
+        
+    document.querySelectorAll('li').forEach(item=>{
+        item.addEventListener("click", function(){
+            this.classList.toggle("olist")
+        })
+
+    })
+   
+    add.addEventListener("click", function(){
+        let newTask = inp1.value
+        list.innerHTML += <li>${newTask}</li>
+        document.querySelectorAll('li').forEach(item=>{
+        item.addEventListener("click", function(){
+            this.classList.toggle("olist")
+        })
+
+    })
+    })
+    firstR.addEventListener("click", function(){
+        document.querySelectorAll(".olist").forEach(item=>{
+            waited.removeChild(item)
+            proggress.appendChild(item)
+
+        })
+       })  
+       </script> -->
+  </body>
+</html>
+
+<!-- <script>
+//   function addTask() {
+//     let taskInput = document.getElementById("taskInput");
+//     let taskText = taskInput.value.trim(" ");
+//     if (taskText === "") {
+//       alert("Zehmet olmasa metni daxil edin");
+//       return;
+//     }
+//     let listItem = document.createElement("li");
+//     listItem.innerHTML = "<span>" + taskText + "</span>";
+//     let todoList = document.getElementById("todoList");
+//     todoList.appendChild(listItem);
+//     taskInput.value = "";
+//     document.querySelectorAll("li").forEach((item) => {
+//       item.addEventListener("click", function () {
+//         this.classList.toggle("selected");
+//       });
+//     });
+//   }
+
+  // function addTask() {
+  //     let taskInput = document.getElementById("taskInput");
+  //     let taskText = taskInput.value.trim(" ");
+  //     if (taskText === "") {
+  //         alert("Zehmet olmasa metni daxil edin");
+  //         return;
+  //     }
+  //     let listItem = document.createElement("li");
+  //     listItem.innerHTML = "<span>" + taskText + "</span>";
+  //     let todoList = document.getElementById("todoList");
+  //     todoList.appendChild(listItem);
+  //     taskInput.value = "";
+  // }
+
+  // function selectTask(listId) {
+  //     let allLists = document.querySelectorAll('.taskList');
+  //     allLists.forEach(function(list) {
+  //         let items = list.getElementsByTagName("li");
+  //         for (let i = 0; i < items.length; i++) {
+  //             items[i].classList.remove("selected");
+  //         }
+  //     });
+
+  //     let listItem = event.target.closest("li");
+  //     if (listItem) {
+  //         listItem.classList.add("selected");
+  //     }
+  // }
+
+  // function moveList(listId, direction) {
+  //     let selectedTask = document.querySelector("#" + listId + " .selected");
+  //     if (selectedTask) {
+  //         let targetListId;
+  //         if (direction === "right") {
+  //             if (listId === "todoList") {
+  //                 targetListId = "doingList";
+  //             } else if (listId === "doingList") {
+  //                 targetListId = "doneList";
+  //             }
+  //         } else if (direction === "left") {
+  //             if (listId === "doingList") {
+  //                 targetListId = "todoList";
+  //             } else if (listId === "doneList") {
+  //                 targetListId = "doingList";
+  //             }
+  //         }
+  //         let targetList = document.getElementById(targetListId);
+  //         selectedTask.parentNode.removeChild(selectedTask);
+  //         targetList.appendChild(selectedTask);
+  //         selectedTask.classList.remove("selected");
+  //     }
+  // }
+</script> -->

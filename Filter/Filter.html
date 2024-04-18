@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Filter Proqramı</title>
+    <style>
+         body {
+             font-family: Arial, sans-serif;
+             background-color: #f4f4f4;
+             margin: 0;
+             padding: 0;
+             overflow-x: hidden;
+        }
+        .buttons{
+            margin: 10px;
+            width: 100%;
+            display: flex;
+            justify-content:center;
+            align-items: center;
+
+        }
+        .buttons button{
+            padding: 8px 12px ;
+            background-color: black;
+            color: #fff;
+            border-radius: 8px;
+            margin: 10px;
+        }
+        .gallery{
+
+            flex-wrap: wrap;
+            margin: 10px;
+            width: 100%;
+            display: flex;
+            justify-content:space-around;
+            align-items: center;
+        }
+        .card {
+            border: 1px solid #0000;
+            border-radius: 30px;
+            display: none;
+
+        }
+        img{
+            width: 300px;
+            height: 300px;
+            object-fit: cover;
+            border-radius: 10px;
+          }
+        .show {
+          display: block;
+        }
+    </style>
+</head>
+<body>
+    <div class="buttons">
+        <button onclick="filterSelection(this, 'all')">All</button>
+        <button onclick="filterSelection(this, 'nature')">Nature</button>
+        <button onclick="filterSelection(this, 'car')">Car</button>
+        <button onclick="filterSelection(this, 'people')">People</button>
+    </div>
+    <div class="gallery">
+        <div class="card nature" data-category="nature">
+            <img src="https://i.pinimg.com/564x/e8/f8/ae/e8f8aea0a45e48ce011bc1886cc6f5a6.jpg" alt="">
+            <h2>Lorem, ipsum.</h2>
+            <p>Lorem ipsum dolor sit.</p>
+        </div>
+        <div class="card nature" data-category="nature">
+            <img src="https://i.pinimg.com/236x/cd/e5/25/cde525e5fc64fc4cad240dc595f14491.jpg" alt="">
+            <h2>Lorem, ipsum.</h2>
+            <p>Lorem ipsum dolor sit.</p>
+        </div>
+        <div class="card nature" data-category="nature">
+            <img src="https://i.pinimg.com/236x/a3/bd/99/a3bd99ff636a9cd1c51b07c65f1aae60.jpg" alt="">
+            <h2>Lorem, ipsum.</h2>
+            <p>Lorem ipsum dolor sit.</p>
+        </div>
+        <div class="card car" data-category="car">
+            <img src="https://i.pinimg.com/236x/b5/e7/ec/b5e7ec76c362c6fccaa428d39a0a1028.jpg" alt="">
+            <h2>Lorem, ipsum.</h2>
+            <p>Lorem ipsum dolor sit.</p>
+        </div>
+        <div class="card car" data-category="car">
+            <img src="https://i.pinimg.com/236x/d0/e4/27/d0e427b2a1e9ca9233daf6b96418b622.jpg " alt="">
+            <h2>Lorem, ipsum.</h2>
+            <p>Lorem ipsum dolor sit.</p>
+        </div>
+        <div class="card car" data-category="car">
+            <img src="https://i.pinimg.com/236x/ec/cd/22/eccd221d8afe5447843f5b9e9e55a065.jpg" alt="">
+            <h2>Lorem, ipsum.</h2>
+            <p>Lorem ipsum dolor sit.</p>
+        </div>
+        <div class="card people" data-category="people">
+            <img src="https://i.pinimg.com/236x/bb/55/3e/bb553e1dc46c8c576b86ee4813a450b2.jpg" alt="">
+            <h2>Lorem, ipsum.</h2>
+            <p>Lorem ipsum dolor sit.</p>
+        </div>
+        <div class="card people" data-category="people">
+            <img src="https://i.pinimg.com/564x/25/ea/f5/25eaf5ab8cf5560a0f6f5ca52f84fe39.jpg" alt="">
+            <h2>Lorem, ipsum.</h2>
+            <p>Lorem ipsum dolor sit.</p>
+        </div>
+        <div class="card people" data-category="people">
+            <img src="https://i.pinimg.com/236x/14/26/5e/14265ebc111c4bd5eda1749c06de9c9f.jpg" alt="">
+            <h2>Lorem, ipsum.</h2>
+            <p>Lorem ipsum dolor sit.</p>
+        </div>
+
+    </div>
+   <script>
+        function filterSelection(button, category) {
+          let cards = document.querySelectorAll('.card');
+        
+          cards.forEach(function(card) {
+            if (category === 'all' || card.dataset.category === category) {
+              card.classList.add('show');
+            } else {
+              card.classList.remove('show');
+            }
+          });
+
+          let buttons = document.querySelectorAll('.buttons button');
+          buttons.forEach(function(btn) {
+            btn.style.backgroundColor = 'black';
+          });
+          
+
+          button.style.backgroundColor = 'blue';
+        }
+
+        filterSelection(document.querySelector('.buttons button:nth-child(3)'), 'car');
+   </script>
+</body>
+</html>

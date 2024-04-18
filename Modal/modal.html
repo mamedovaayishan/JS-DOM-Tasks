@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Modal</title>
+    <link rel="stylesheet" href="./modal.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Alex+Brush&display=swap" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/css/all.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+</head>
+<body>
+    
+    <section class="portfolio"> 
+        <div class="title">
+            <h3>Portfolio</h3>
+            <p>Lorem ipsum dolor sit amet consectetur.</p>
+        </div>
+        <div class="content">
+            <div class="box" onclick="openModal()">
+                <div class="image-box" >
+                    <img src="https://startbootstrap.github.io/startbootstrap-agency/assets/img/portfolio/1.jpg" alt="">
+                    <div class="overlay">
+                      <div class="text">+</div>
+                    </div>
+                </div>
+                <div class="desc">
+                    <p class="title">Threads</p>
+                    <p class="subtitle">Illustration</p>
+                </div> `
+            </div>
+            <div class="box" onclick="openModal()">
+                <div class="image-box">
+                    <img src="https://startbootstrap.github.io/startbootstrap-agency/assets/img/portfolio/1.jpg" alt="">
+                    <div class="overlay">
+                      <div class="text">+</div>
+                    </div>
+                </div>
+                <div class="desc">
+                    <p class="title">Threads</p>
+                    <p class="subtitle">Illustration</p>
+                </div>
+            </div>
+            <div class="box" onclick="openModal()">
+                <div class="image-box">
+                    <img src="https://startbootstrap.github.io/startbootstrap-agency/assets/img/portfolio/1.jpg" alt="">
+                    <div class="overlay">
+                      <div class="text">+</div>
+                    </div>
+                </div>
+                <div class="desc">
+                    <p class="title">Threads</p>
+                    <p class="subtitle">Illustration</p>
+                </div>
+            </div>
+            <div class="box" onclick="openModal()">
+                <div class="image-box">
+                    <img src="https://startbootstrap.github.io/startbootstrap-agency/assets/img/portfolio/1.jpg" onclick="openModal(this.src)"  alt="">
+                    <div class="overlay">
+                      <div class="text">+</div>
+                    </div>
+                </div>
+                <div class="desc">
+                    <p class="title">Threads</p>
+                    <p class="subtitle">Illustration</p>
+                </div>
+            </div>
+            <div class="box" onclick="openModal()">
+                <div class="image-box">
+                    <img src="https://startbootstrap.github.io/startbootstrap-agency/assets/img/portfolio/1.jpg" alt="">
+                    <div class="overlay">
+                      <div class="text">+</div>
+                    </div>
+                </div>
+                <div class="desc">
+                    <p class="title">Threads</p>
+                    <p class="subtitle">Illustration</p>
+                </div>
+            </div>
+            <div class="box" onclick="openModal()">
+                <div class="image-box">
+                    <img src="https://startbootstrap.github.io/startbootstrap-agency/assets/img/portfolio/1.jpg" alt="">
+                    <div class="overlay">
+                      <div class="text">+</div>
+                    </div>
+                </div>
+                <div class="desc">
+                    <p class="title">Threads</p>
+                    <p class="subtitle">Illustration</p>
+                </div>
+            </div>
+
+
+        </div>
+    </section>
+
+    <div id="myModal" class="modal">
+        <div class="modal-content">
+          <span class="close" onclick="closeModal()">&times;</span>
+          <img src="https://startbootstrap.github.io/startbootstrap-agency/assets/img/portfolio/1.jpg" alt="">
+          <div class="desc">
+            <p class="title">Threads</p>
+            <p class="subtitle">Illustration</p>
+        </div>
+        </div>
+    </div>
+
+    <script>
+        var modal = document.getElementById("myModal");
+        var span = document.getElementsByClassName("close")[0];
+        
+        function openModal() {
+          modal.style.display = "block";
+        }
+        
+        function closeModal() {
+          modal.style.display = "none";
+        }
+        
+        window.onclick = function(event) {
+          if (event.target == modal) {
+            modal.style.display = "none";
+          }
+        }
+        </script>
+        
+</body>
+</html>

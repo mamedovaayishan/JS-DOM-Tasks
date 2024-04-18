@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>FAQ</title>
+<style>
+  .question {
+    cursor: pointer;
+    margin-bottom: 10px;
+    font-weight: bold;
+  }
+  .answer {
+    display: none;
+    margin-bottom: 20px;
+  }
+</style>
+</head>
+<body>
+
+<h2>Sıkça Sorulan Sorular</h2>
+
+<div class="question" onclick="toggleAnswer('answer1')">Lorem, ipsum.</div>
+<div id="answer1" class="answer">Lorem ipsum dolor sit amet consectetur adipisicing elit. Obcaecati, perspiciatis. </div>
+
+<div class="question" onclick="toggleAnswer('answer2')">Lorem, ipsum.</div>
+<div id="answer2" class="answer">Lorem ipsum dolor sit amet consectetur adipisicing elit. Iure, sequi!</div>
+
+<div class="question" onclick="toggleAnswer('answer3')">Lorem, ipsum.</div>
+<div id="answer3" class="answer">Lorem ipsum dolor sit amet consectetur adipisicing elit. Accusantium totam ipsa exercitationem vel.</div>
+
+<div class="question" onclick="toggleAnswer('answer4')">Lorem, ipsum.</div>
+<div id="answer4" class="answer">Lorem ipsum dolor sit amet consectetur adipisicing elit. Repudiandae, facere.</div>
+
+<script>
+  function toggleAnswer(id) {
+    var answer = document.getElementById(id);
+    if (answer.style.display === "none") {
+      answer.style.display = "block";
+    } else {
+      answer.style.display = "none";
+    }
+  }
+</script>
+
+</body>
+</html>

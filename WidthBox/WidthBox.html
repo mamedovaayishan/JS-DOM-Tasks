@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Increasing Div Width</title>
+<style>
+    #myDiv {
+        width: 200px;
+        height: 100px;
+        background-color: lightblue;
+        margin-bottom: 20px;
+    }
+</style>
+</head>
+<body>
+
+<div id="myDiv"></div>
+<input type="number" id="inputWidth" placeholder="Enter the width value">
+<button onclick="increaseWidth()">Increase Width</button>
+
+<script>
+    function increaseWidth() {
+        var inputVal = document.getElementById("inputWidth").value;
+        var divWidth = document.getElementById("myDiv").offsetWidth;
+        
+        if (inputVal !== "") {
+            if (!isNaN(inputVal)) {
+                var newWidth = divWidth + parseInt(inputVal);
+                document.getElementById("myDiv").style.width = newWidth + "px";
+            } else {
+                alert("Please enter a numeric value!");
+            }
+        } else {
+            alert("Please enter a value!");
+        }
+    }
+</script>
+
+</body>
+</html>

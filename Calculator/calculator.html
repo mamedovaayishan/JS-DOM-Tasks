@@ -1,81 +1,143 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Calculator</title>
-    <link rel="stylesheet" href="./calculator.css">
-</head>
-<body>
+    <link rel="stylesheet" href="./calculator.css" />
+  </head>
+  <body>
     <div class="calculator">
-        <input type="text" id="display" disabled><br>
-        <input type="button" value="1" onclick="appendToDisplay('1')">
-        <input type="button" value="2" onclick="appendToDisplay('2')">
-        <input type="button" value="3" onclick="appendToDisplay('3')">
-        <input type="button" value="+" onclick="appendToDisplay('+')"><br>
-        <input type="button" value="4" onclick="appendToDisplay('4')">
-        <input type="button" value="5" onclick="appendToDisplay('5')">
-        <input type="button" value="6" onclick="appendToDisplay('6')">
-        <input type="button" value="-" onclick="appendToDisplay('-')"><br>
-        <input type="button" value="7" onclick="appendToDisplay('7')">
-        <input type="button" value="8" onclick="appendToDisplay('8')">
-        <input type="button" value="9" onclick="appendToDisplay('9')">
-        <input type="button" value="*" onclick="appendToDisplay('*')"><br>
-        <input type="button" value="0" onclick="appendToDisplay('0')">
-        <input type="button" value="." onclick="appendToDisplay('.')">
-        <input type="button" value="=" onclick="calculate()">
-        <input type="button" value="/" onclick="appendToDisplay('/')"><br>
-        <input type="button" value="C" onclick="clearDisplay()">
-        <input type="button" value="CE" onclick="deleteLast()">
+      <input type="text" id="display" disabled /><br />
+      <input type="button" value="1" onclick="appendToDisplay('1')" />
+      <input type="button" value="2" onclick="appendToDisplay('2')" />
+      <input type="button" value="3" onclick="appendToDisplay('3')" />
+      <input type="button" value="+" onclick="appendToDisplay('+')" /><br />
+      <input type="button" value="4" onclick="appendToDisplay('4')" />
+      <input type="button" value="5" onclick="appendToDisplay('5')" />
+      <input type="button" value="6" onclick="appendToDisplay('6')" />
+      <input type="button" value="-" onclick="appendToDisplay('-')" /><br />
+      <input type="button" value="7" onclick="appendToDisplay('7')" />
+      <input type="button" value="8" onclick="appendToDisplay('8')" />
+      <input type="button" value="9" onclick="appendToDisplay('9')" />
+      <input type="button" value="*" onclick="appendToDisplay('*')" /><br />
+      <input type="button" value="0" onclick="appendToDisplay('0')" />
+      <input type="button" value="." onclick="appendToDisplay('.')" />
+      <input type="button" value="=" onclick="calculate()" />
+      <input type="button" value="/" onclick="appendToDisplay('/')" /><br />
+      <input type="button" value="C" onclick="clearDisplay()" />
+      <input type="button" value="CE" onclick="deleteLast()" />
     </div>
 
+    <script>
+      // function appendToDisplay(value) {
+      //     document.getElementById('display').value += value;
+      // }
+
+      // function deleteLast() {
+      //     var display = document.getElementById('display');
+      //     display.value = display.value.slice(0, -1);
+      // }
+
+      // function clearDisplay() {
+      //     document.getElementById('display').value = '';
+      // }
+
+      // function calculate() {
+      //     var expression = document.getElementById('display').value;
+      //     try {
+      //         var result = evaluateExpression(expression);
+      //         document.getElementById('display').value = result;
+      //     } catch (error) {
+      //         document.getElementById('display').value = 'Error';
+      //     }
+      // }
+
+      // function evaluateExpression(expression) {
+      //     expression = expression.replace(/[^-()\d/*+.]/g, '');
+      //     var numbers = expression.match(/\d+(\.\d+)?/g);
+      //     var operators = expression.match(/[*/+-]/g);
+      //     var result = parseFloat(numbers[0]);
+
+      //     for (var i = 0; i < operators.length; i++) {
+      //         var num = parseFloat(numbers[i + 1]);
+      //         if (operators[i] === "+") result += num;
+      //         else if (operators[i] === "-") result -= num;
+      //         else if (operators[i] === "*") result *= num;
+      //         else if (operators[i] === "/") {
+      //             if (num === 0) throw "Divide by zero error";
+      //             result /= num;
+      //         }
+      //     }
+
+      //   return result;
+      // }
 
 
-    <script >
-        // function appendToDisplay(value) {
-        //     document.getElementById('display').value += value;
-        //   }
-        
-        //   function clearDisplay() {
-        //     document.getElementById('display').value = '';
-        //   }
-        
-        //   function deleteLast() {
-        //     var expression = document.getElementById('display').value;
-        //     document.getElementById('display').value = expression.slice(0, -1);
-        //   }
-        
-        //   function calculate() {
-        //     var expression = document.getElementById('display').value;
-        //     var result = eval(expression);
-        //     document.getElementById('display').value = result;
-        //   }
-        
+      
+    //   // Tüm butonları seç
+    //   const buttons = document.querySelectorAll(".button");
 
-        function appendToDisplay(value) {
-          document.getElementById('display').value += value;
-        }
-        
-        function clearDisplay() {
-          document.getElementById('display').value = '';
-        }
-        
-        function calculate() {
-          var expression = document.getElementById('display').value;
-          var numbers = expression.split(/\+|\-|\*|\//);
-          var operators = expression.replace(/[0-9]|\./g, "").split("");
-          var result = parseFloat(numbers[0]);
-        
-          for (var i = 0; i < operators.length; i++) {
-            var num = parseFloat(numbers[i + 1]);
-            if (operators[i] === "+") result += num;
-            else if (operators[i] === "-") result -= num;
-            else if (operators[i] === "*") result *= num;
-            else if (operators[i] === "/") result /= num;
-          }
-        
-          document.getElementById('display').value = result;
-        }
+    //   // Butonlara tek bir olay dinleyici ekle
+    //   buttons.forEach((button) => {
+    //     button.addEventListener("click", function () {
+    //       const value = this.innerHTML;
+    //       // "=" butonuna basıldığında hesapla
+    //       if (value === "=") {
+    //         calculate();
+    //       } else if (value === "C") {
+    //         // "C" butonuna basıldığında temizle
+    //         clearDisplay();
+    //       } else if (value === "CE") {
+    //         // "CE" butonuna basıldığında son karakteri sil
+    //         deleteLast();
+    //       } else {
+    //         // Diğer durumlarda değeri ekrana ekle
+    //         appendToDisplay(value);
+    //       }
+    //     });
+    //   });
+
+    //   // Ekran değerini saklayan değişken
+    //   let displayValue = "";
+
+    //   // Ekrana değer ekleme fonksiyonu
+    //   function appendToDisplay(value) {
+    //     displayValue += value;
+    //     updateDisplay();
+    //   }
+
+    //   // Ekranı temizleme fonksiyonu
+    //   function clearDisplay() {
+    //     displayValue = "";
+    //     updateDisplay();
+    //   }
+
+    //   // Son karakteri silme fonksiyonu
+    //   function deleteLast() {
+    //     displayValue = displayValue.slice(0, -1);
+    //     updateDisplay();
+    //   }
+
+    //   // Ekranı güncelleme fonksiyonu
+    //   function updateDisplay() {
+    //     document.getElementById("display").value = displayValue;
+    //   }
+
+    //   // Hesaplama fonksiyonu
+    //   function calculate() {
+    //     try {
+    //       const result = eval(displayValue);
+    //       displayValue = result.toString();
+    //       updateDisplay();
+    //     } catch (error) {
+    //       displayValue = "Error";
+    //       updateDisplay();
+    //     }
+    //   }
+
+
+    
     </script>
-</body>
+  </body>
 </html>

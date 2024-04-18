@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Slider Project</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 0;
+        }
+        .main{
+            position: relative;
+            padding: 10px 0;
+            width: 100%;
+            height: auto;
+            display: flex;
+            justify-content:center ;
+            flex-direction: column;
+            align-items: center;
+        }
+        #slider{
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 100%;
+        }
+        #slider .box{
+            width: 900px;
+            height: 500px;
+        }
+        #slider .box img{
+            width: 100%;
+            height: 500px;
+            object-fit: cover;
+        }
+        .bottom-slider{
+            width: 900px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .bottom-slider .box img{
+            width: 150px;
+            height: 160px;
+            object-fit: cover;
+            cursor: pointer;
+        }
+        .nextprew {
+            position: absolute;
+            top: 35vh;
+            display: flex;
+            justify-content: space-between;
+            width: 900px; 
+        }
+        
+        .prev-btn,
+        .next-btn {
+            background-color: #333;
+            color: #fff;
+            border: none;
+            padding: 10px 15px;
+            font-size: 20px;
+            cursor: pointer;
+        }
+        
+        .prev-btn:hover,
+        .next-btn:hover {
+            background-color: #555;
+        }
+
+    </style>
+</head>
+<body>
+    <div class="main">
+        <div id="slider">
+            <div class="box" >
+                <img class="slider-img" onclick="updateSlider()" src="" alt="">
+            </div>
+        </div>
+        <div class="bottom-slider">
+            <div class="box" >
+                <img src="https://i.pinimg.com/236x/3c/b3/b0/3cb3b06b7adeb66426537db2a63edefa.jpg" alt="">
+            </div>
+            <div class="box" >
+                <img src="https://i.pinimg.com/236x/64/49/7a/64497a3472c6086b1452294e9d9aca40.jpg" alt="">
+            </div>
+            <div class="box">
+                <img src="https://i.pinimg.com/236x/69/f7/e6/69f7e6faf6af94767642f2da9f9c4950.jpg" alt="">
+            </div>
+            <div class="box">
+                <img src="https://i.pinimg.com/236x/ff/51/42/ff5142a56d63036d0e62ed843a69fcb2.jpg" alt="">
+            </div>
+            <div class="box">
+                <img src="https://i.pinimg.com/236x/d3/37/a3/d337a3922212915ffe8189ba5aa26cc1.jpg" alt="">
+            </div>
+            <div class="box">
+                <img src="https://i.pinimg.com/236x/d1/21/63/d121633b5cb77a32718f1ab2fa18ae8f.jpg" alt="">
+            </div>
+        </div>
+        <div class="nextprew">
+            <button class="prev-btn" onclick="prevSlide()" >&#10094;</button>
+            <button class="next-btn" onclick="nextSlide()" >&#10095;</button>
+        </div>
+        
+    </div>
+
+    
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            const sliderImages = document.querySelectorAll('.bottom-slider img');
+            const mainSliderImage = document.querySelector('.slider-img');
+            let currentIndex = 0;
+
+            sliderImages.forEach((image, index) => {
+                image.addEventListener('click', function() {
+                    const clickedSrc = this.getAttribute('src');
+                    mainSliderImage.setAttribute('src', clickedSrc);
+                    currentIndex = index;
+                });
+            });
+
+            function nextSlide() {
+                    currentIndex++;
+                    if (currentIndex >= sliderImages.length) {
+                        currentIndex = 0;
+                    }
+                    updateSlider();
+                }
+                
+                function prevSlide() {
+                    currentIndex--;
+                    if (currentIndex < 0) {
+                        currentIndex = sliderImages.length - 1;
+                    }
+                    updateSlider();
+                }
+
+            function updateSlider() {
+                const newSrc = sliderImages[currentIndex].getAttribute('src');
+                mainSliderImage.setAttribute('src', newSrc);
+            }
+        });
+    </script>
+    
+</body>
+</html>
